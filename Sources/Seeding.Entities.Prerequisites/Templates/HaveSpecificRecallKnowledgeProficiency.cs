@@ -4,12 +4,12 @@ using Templating;
 
 namespace Seeding.Entities.Prerequisites.Templates
 {
-    public class HaveSpecificRecallKnowledge : BaseModel
+    public class HaveSpecificRecallKnowledgeProficiency : BaseModel
     {
         public bool RequiresAssurance { get; }
         public string RequiredProficiencyName { get; }
 
-        public HaveSpecificRecallKnowledge(string requiredProficiencyName, bool requiresAssurance)
+        public HaveSpecificRecallKnowledgeProficiency(string requiredProficiencyName, bool requiresAssurance)
         {
             RequiredProficiencyName = requiredProficiencyName;
             RequiresAssurance = requiresAssurance;
