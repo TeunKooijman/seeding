@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Seeding.Models\Seeding.Models.csproj" />
+    <ProjectReference Include="..\Templating\Templating.csproj" />
+    <ProjectReference Include="..\Transforming\Transforming.csproj" />
+    <ProjectReference Include="..\Translating\Translating.csproj" />
+  </ItemGroup>
+  
+</Project>

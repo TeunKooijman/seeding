@@ -1,0 +1,74 @@
+﻿using Silvester.Pathfinder.Reference.Database.Models.Entities;
+using Silvester.Pathfinder.Reference.Database.Models.Prerequisites.Instances;
+using Silvester.Pathfinder.Reference.Database.Utilities.Text;
+using System;
+using System.Collections.Generic;
+
+namespace Silvester.Pathfinder.Reference.Database.Seeding.Seeds.Feats.Instances
+{
+    public class {{ClassName}} : Template
+    {
+        public static readonly Guid ID = Guid.Parse("{{GenerateGuid}}");
+
+        protected override Feat GetFeat()
+        {
+            return new Feat
+            {
+                Id = ID,
+                Name = "{{FeatName}}",
+                Level = {{Level}},
+                {{#HasArchetype}}ArchetypeId = Archetypes.Instances.{{Archetype}}.ID,{{/HasArchetype}}
+                ActionTypeId = ActionTypes.Instances.{{ActionType}}.ID,
+                CanBeLearnedMoreThanOnce = {{CanBeLearnedMoreThanOnce}},
+                Special = {{Special}},
+                Trigger = {{Trigger}},
+                Frequency = {{Frequency}}
+            };
+        }
+
+        protected override IEnumerable<TextBlock> GetDetailBlocks()
+        {
+            {{#Details}}
+            yield return new TextBlock { Id = Guid.Parse("{{GenerateGuid}}"), Type = TextBlockType.{{Type}}, Text = "{{Text}}" };
+            {{/Details}}
+        }
+
+        protected override void GetPrerequisites(BooleanPrerequisiteBuilder builder)
+        {
+            {{#Prerequisites}}
+            {{Render}}
+            {{/Prerequisites}}
+        }
+
+        protected override IEnumerable<Guid> GetTraits()
+        {
+            {{#Traits}}
+            yield return Traits.Instances.{{ClassName}}.ID;
+            {{/Traits}}
+        }
+
+        {{#HasRollableEffect}}
+        protected override RollableEffect? GetRollableEffect()
+        {
+            return new RollableEffect
+            {
+                Id = Guid.Parse("{{GenerateGuid}}"),
+                {{#HasCriticalSuccess}}Success = "{{CriticalSuccess}}",{{/HasCriticalSuccess}}
+                {{#HasSuccess}}Success = "{{Success}}",{{/HasSuccess}}
+                {{#HasFailure}}Failure = "{{Failure}}",{{/HasFailure}}
+                {{#HasCriticalFailure}}CriticalFailure = "{{CriticalFailure}}",{{/HasCriticalFailure}}
+            };
+        }
+        {{/HasRollableEffect}}
+            
+        protected override SourcePage GetSourcePage()
+        {
+            return new SourcePage
+            {
+                Id = Guid.Parse("{{GenerateGuid}}"),
+                SourceId = Sources.Instances.{{Source}}.ID,
+                Page = {{Page}}
+            };
+        }
+    }
+}

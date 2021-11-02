@@ -1,0 +1,16 @@
+﻿{{#IsOrOperation}}
+{{BuilderParameterName}}.AddOr({{GenerateGuid}}, or => 
+{
+    {{#Templates}}
+    {{Render}}
+    {{/Templates}}
+});
+{{/IsOrOperation}}
+{{#IsAndOperation}}
+{{BuilderParameterName}}.AddAnd({{GenerateGuid}}, and => 
+{
+    {{#Templates}}
+    {{Render}}
+    {{/Templates}}
+});
+{{/IsAndOperation}}

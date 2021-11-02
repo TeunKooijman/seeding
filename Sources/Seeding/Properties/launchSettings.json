@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Silvester.Pathfinder.Official.Api.Seeding": {
+      "commandName": "Project",
+      "commandLineArgs": "seed feats -i Resources\feats.csv"
+    }
+  }
+}
